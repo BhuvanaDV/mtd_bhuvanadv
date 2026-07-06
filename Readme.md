@@ -871,3 +871,321 @@ Math.pow(2, 3);
 # Infix to Postfix Conversion
 
 Although programmers write expressions in **Infix notation**, execution machines internally convert expressions into **Postfix notation** before evaluation.
+
+
+# Day 3 Notes - 06-07-2026
+
+## Arithmetic Operations in Java
+
+```java
+int num = 40 / 7;
+System.out.println(num);      // 5
+
+float num2 = 40 / 7;
+System.out.println(num2);     // 5.0
+
+double num3 = 40 / 7.0;
+System.out.println(num3);     // 5.714285714285714
+```
+
+### Explanation
+
+- If both operands are integers, Java performs **integer division**.
+- Integer division discards the decimal part.
+- If one operand is a floating-point value (`float` or `double`), Java performs **floating-point division**.
+
+---
+
+## Assignments
+
+- Assignment 4 - IEEE 754 Floating Point Representation
+- Assignment 5 - Why Python has no `++` and `--`
+- Assignment 6 - Precedence of Relational Operators
+- Assignment 7 - Minimum Relational Operators
+
+---
+
+# Relational Operators
+
+Relational operators compare two values and return a **boolean** value.
+
+| Operator | Meaning |
+|----------|---------|
+| `<` | Less than |
+| `>` | Greater than |
+| `<=` | Less than or Equal to |
+| `>=` | Greater than or Equal to |
+| `==` | Equal to |
+| `!=` | Not Equal to |
+
+### Properties
+
+- Input: Numbers
+- Output: Boolean (`true` or `false`)
+- All relational operators are **binary operators**.
+
+---
+
+## Operator Precedence
+
+Highest to Lowest
+
+1. Arithmetic Operators
+2. Relational Operators
+3. Logical Operators
+4. Assignment Operator
+
+### Note
+
+The **post-increment (`num++`)** and **post-decrement (`num--`)** operators first use the current value and then perform the increment/decrement.
+
+Example:
+
+```java
+int num = 5;
+int result = num++;
+
+System.out.println(result); // 5
+System.out.println(num);    // 6
+```
+
+---
+
+# Intervals
+
+## Closed Interval
+
+```
+[10, 20]
+```
+
+Includes both endpoints.
+
+```java
+i >= 10 && i <= 20
+```
+
+---
+
+## Open Interval
+
+```
+(20, 40)
+```
+
+Excludes both endpoints.
+
+```java
+i > 20 && i < 40
+```
+
+Values included: **21 to 39**
+
+---
+
+## Left Open Interval
+
+```
+(15, 25]
+```
+
+Left endpoint excluded and right endpoint included.
+
+```java
+i > 15 && i <= 25
+```
+
+Values included: **16 to 25**
+
+---
+
+# for Loop Examples
+
+```java
+for(int i = 1; i <= 10; i++)
+```
+
+Equivalent to
+
+```java
+for(int i = 1; i < 11; i++)
+```
+
+---
+
+# Logical Operators
+
+| Operator | Meaning |
+|----------|---------|
+| `&` | Logical AND |
+| `|` | Logical OR |
+| `!` | Logical NOT |
+| `&&` | Short-Circuit AND |
+| `||` | Short-Circuit OR |
+
+### Note
+
+In **Python**, only the **short-circuit logical operators** are available:
+
+- `and`
+- `or`
+- `not`
+
+---
+
+## Properties
+
+- Input: Boolean values
+- Output: Boolean value
+
+---
+
+# Short-Circuit Example
+
+```java
+int a = 3, b = 5, c = 10;
+
+if (a-- <= b || b++ != c)
+    System.out.println("Mysuru");
+else
+    System.out.println("Hunasuru");
+
+System.out.println(a + " " + b + " " + c);
+```
+
+### Explanation
+
+- `a-- <= b` is `true`.
+- Since `||` is short-circuit OR, the second condition is **not evaluated**.
+- `b` is not incremented.
+
+Output
+
+```
+Mysuru
+2 5 10
+```
+
+---
+
+# Non Short-Circuit Example
+
+```java
+int a = 3, b = 5, c = 10;
+
+if (a-- <= b | b++ != c)
+    System.out.println("Mysuru");
+else
+    System.out.println("Hunasuru");
+
+System.out.println(a + " " + b + " " + c);
+```
+
+### Explanation
+
+- `|` evaluates **both operands**.
+- `b++` executes.
+
+Output
+
+```
+Mysuru
+2 6 10
+```
+
+---
+
+# Increment Operator Example
+
+```java
+int x = 4, y = 5, z = 1;
+
+x++;
+System.out.println(x + " " + y + " " + z);
+
+++x;
+System.out.println(x + " " + y + " " + z);
+
+y = z++;
+System.out.println(x + " " + y + " " + z);
+
+x = ++y;
+System.out.println(x + " " + y + " " + z);
+
+z = x++ + ++x;
+System.out.println(x + " " + y + " " + z);
+```
+
+---
+
+# Bitwise Operators
+
+| Operator | Meaning |
+|----------|---------|
+| `~` | Bitwise NOT |
+| `&` | Bitwise AND |
+| `|` | Bitwise OR |
+| `^` | Bitwise XOR |
+| `<<` | Left Shift |
+| `>>` | Right Shift |
+
+---
+
+## Pending Topic
+
+- Problems on Bitwise Operators
+
+---
+
+# Miscellaneous Notes
+
+## Expression
+
+```
+4 + 7 - 2 + 1
+```
+
+---
+
+## Assignment Statement
+
+```java
+x = y;
+```
+
+---
+
+## Exponentiation (Python)
+
+```python
+3 ** 2
+```
+
+Output
+
+```
+9
+```
+
+---
+
+## Object Example
+
+```java
+obj1.x_axis
+
+Point p = new Point(3, 4);
+```
+
+---
+
+# Key Takeaways
+
+- Integer division removes the decimal part.
+- Floating-point division retains decimal values.
+- Relational operators return boolean values.
+- `&&` and `||` are short-circuit operators.
+- `&` and `|` always evaluate both operands.
+- Post-increment uses the value first, then increments.
+- Pre-increment increments first, then uses the value.
+- Bitwise operators work on individual bits of integers.
