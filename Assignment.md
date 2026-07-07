@@ -976,3 +976,478 @@ This means Rahul did **not** score more than Anu.
 
 ---
 
+## DAY-4 [7/7/26]
+# Assignment 8
+
+# 1. What is Pythonic?
+
+## Definition
+**Pythonic** means writing Python code in a way that follows Python's style, philosophy, and best practices. Pythonic code is simple, readable, and easy to understand.
+
+Python follows the principle:
+
+> **"Readability counts."**
+
+A Pythonic program is:
+- Simple
+- Clean
+- Easy to read
+- Easy to maintain
+- Uses Python's built-in features whenever possible
+
+### Example
+
+### Non-Pythonic Code
+```python
+numbers = [1, 2, 3, 4, 5]
+square = []
+
+for i in numbers:
+    square.append(i * i)
+
+print(square)
+```
+
+### Pythonic Code
+```python
+numbers = [1, 2, 3, 4, 5]
+
+square = [i * i for i in numbers]
+
+print(square)
+```
+
+**Output**
+```
+[1, 4, 9, 16, 25]
+```
+
+The second approach is shorter, cleaner, and more Pythonic.
+
+---
+
+# 2. What is PEP 8?
+
+## Definition
+**PEP 8 (Python Enhancement Proposal 8)** is the official style guide for writing Python code.
+
+It provides rules and recommendations that make Python programs consistent and readable.
+
+Following PEP 8 helps developers write code that is easier to understand and maintain.
+
+---
+
+## Some Important PEP 8 Rules
+
+### 1. Use meaningful variable names
+
+✔ Good
+```python
+student_name = "Bhuvana"
+```
+
+✘ Bad
+```python
+a = "Bhuvana"
+```
+
+---
+
+### 2. Use 4 spaces for indentation
+
+✔ Correct
+```python
+if True:
+    print("Hello")
+```
+
+---
+
+### 3. Use snake_case for variable and function names
+
+```python
+student_name = "Bhuvana"
+
+def calculate_total():
+    pass
+```
+
+---
+
+### 4. Use PascalCase for class names
+
+```python
+class Student:
+    pass
+```
+
+---
+
+### 5. Leave blank lines between functions and classes
+
+This improves readability.
+
+---
+
+## Advantages of PEP 8
+
+- Improves readability
+- Makes code consistent
+- Easier to debug
+- Easier for team collaboration
+- Makes maintenance easier
+
+---
+
+# Assignment 9
+
+# Evolution of Programming Languages
+
+Programming languages have evolved over time to make programming easier, faster, and more efficient.
+
+---
+
+## 1. Machine Language (1GL)
+
+### Definition
+Machine language is the lowest-level programming language.
+
+It consists only of binary digits:
+- 0
+- 1
+
+Example:
+```
+10110110
+```
+
+### Advantages
+- Executes very fast.
+- Directly understood by the CPU.
+
+### Disadvantages
+- Very difficult to write.
+- Difficult to debug.
+- Machine dependent.
+
+---
+
+## 2. Assembly Language (2GL)
+
+### Definition
+Assembly language uses mnemonics instead of binary numbers.
+
+Example:
+```assembly
+MOV A, B
+ADD A, C
+```
+
+An **Assembler** converts assembly language into machine language.
+
+### Advantages
+- Easier than machine language.
+- Faster execution.
+
+### Disadvantages
+- Machine dependent.
+- Still difficult for large programs.
+
+---
+
+## 3. Domain-Oriented Languages (3GL)
+
+These languages were developed for specific domains.
+
+### Examples
+- COBOL → Business applications
+- FORTRAN → Scientific calculations
+
+### Advantages
+- Easier than assembly language.
+- Domain-specific features.
+
+### Disadvantages
+- Limited to particular domains.
+
+---
+
+## 4. Domain-Friendly Languages
+
+These are general-purpose programming languages.
+
+### Examples
+- C
+- Pascal
+
+They can be used for many different types of applications.
+
+### Advantages
+- Portable
+- Faster
+- Structured programming
+
+---
+
+## 5. Object-Oriented Programming Languages (OOPL)
+
+Object-Oriented Programming introduced concepts such as:
+- Class
+- Object
+- Inheritance
+- Encapsulation
+- Polymorphism
+- Abstraction
+
+Examples:
+- Simula 67
+- C with Classes
+- C++
+
+---
+
+## C++
+
+C++ = C + Object-Oriented Programming
+
+C++ added object-oriented features to the C language.
+
+### Relationship
+
+- Every C program is a C++ program.
+- Every C++ program is **not** a C program.
+
+Reason:
+- C++ is a **superset** of C.
+- C is a **subset** of C++.
+
+---
+
+## Why Java Was Introduced
+
+Although C++ is powerful, it has some drawbacks, such as:
+
+- Friend functions
+- Private inheritance
+- Global variables
+- Global functions
+- Operator overloading
+- Objects can be created in the Stack area
+
+Because of these issues, software experts wanted a **Strict Object-Oriented Programming Language**.
+
+Hence, **Java** was introduced.
+
+Java focuses on:
+- Simplicity
+- Security
+- Portability
+- Robustness
+- Better object-oriented programming
+
+---
+
+# Assignment 10
+
+# Why is There No Function Overloading in Python?
+
+## Definition of Function Overloading
+
+Function overloading means creating multiple functions with the **same name** but **different parameters**.
+
+Languages like Java and C++ support function overloading.
+
+Example in Java:
+
+```java
+add(int a, int b)
+
+add(int a, int b, int c)
+```
+
+Both functions have the same name but different parameter lists.
+
+---
+
+## Why Doesn't Python Support Function Overloading?
+
+Python does **not** support traditional function overloading because:
+
+- Function names act as references to objects.
+- When another function with the same name is created, the previous one is replaced.
+
+Only the latest function definition remains.
+
+---
+
+## Example
+
+```python
+def add(a, b):
+    return a + b
+
+def add(a, b, c):
+    return a + b + c
+
+print(add(10, 20, 30))
+```
+
+**Output**
+```
+60
+```
+
+If we try:
+
+```python
+print(add(10, 20))
+```
+
+**Output**
+```
+TypeError:
+add() missing 1 required positional argument: 'c'
+```
+
+The first function no longer exists because it was overwritten by the second one.
+
+---
+
+## How Does Python Achieve Similar Functionality?
+
+Python uses:
+- Default arguments
+- Variable-length arguments (`*args`)
+- Keyword arguments (`**kwargs`)
+
+### Example using `*args`
+
+```python
+def add(*numbers):
+    return sum(numbers)
+
+print(add(10, 20))
+print(add(10, 20, 30))
+print(add(10, 20, 30, 40))
+```
+
+**Output**
+```
+30
+60
+100
+```
+
+---
+
+## Conclusion
+
+Python does not support traditional function overloading because each new function with the same name replaces the previous one. Instead, Python provides flexible features like `*args`, default parameters, and `**kwargs` to achieve similar behavior.
+
+---
+
+# Assignment 11
+
+# Why is There No Implicit Type Casting in Python?
+
+## What is Type Casting?
+
+Type casting means converting one data type into another.
+
+There are two types:
+
+1. Implicit Type Casting (Automatic)
+2. Explicit Type Casting (Manual)
+
+---
+
+## What is Implicit Type Casting?
+
+Implicit type casting means the programming language automatically converts one data type into another without the programmer writing conversion code.
+
+Some languages perform many automatic conversions.
+
+---
+
+## Why Doesn't Python Perform General Implicit Type Casting?
+
+Python is a **strongly typed** language.
+
+It avoids automatic conversions that may:
+- Lose data
+- Produce unexpected results
+- Cause logical errors
+
+Python requires the programmer to explicitly convert incompatible data types.
+
+This makes programs:
+- Safer
+- More predictable
+- Easier to debug
+
+---
+
+## Example (Without Explicit Conversion)
+
+```python
+age = "21"
+
+print(age + 5)
+```
+
+**Output**
+```
+TypeError:
+can only concatenate str (not "int") to str
+```
+
+Python does not automatically convert `"21"` into the integer `21`.
+
+---
+
+## Correct Way (Explicit Type Casting)
+
+```python
+age = "21"
+
+print(int(age) + 5)
+```
+
+**Output**
+```
+26
+```
+
+Here, `int(age)` explicitly converts the string into an integer.
+
+---
+
+## Another Example
+
+```python
+num = 15
+
+print(float(num))
+```
+
+**Output**
+```
+15.0
+```
+
+The programmer explicitly requests the conversion.
+
+---
+
+## Advantages of Explicit Type Casting
+
+- Prevents accidental errors
+- Makes the code more readable
+- Improves program reliability
+- Gives the programmer full control over data conversion
+
+---
+
+## Conclusion
+
+Python avoids general implicit type casting because it is a strongly typed language. Instead of automatically converting incompatible data types, Python requires **explicit type casting** using functions such as `int()`, `float()`, `str()`, and `bool()`. This makes Python programs safer, clearer, and less prone to unexpected behavior.

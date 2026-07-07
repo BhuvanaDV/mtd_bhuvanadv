@@ -1454,3 +1454,155 @@ Finally, convert the pseudocode into the desired programming language (Java, C, 
   3. Write Pseudocode
   4. Validate
   5. Code
+
+
+# Steps to Solve a Problem
+
+## 1. Understand the Problem
+- Read the problem carefully.
+- Remove or ignore unwanted information.
+- Clearly identify the **Input (I/P)** data.
+- Clearly identify the **Output (O/P)** data.
+- Remember only the relevant and important information required to solve the problem.
+
+---
+
+## 2. Build the Solution
+- Develop the solution using:
+  - Trial and Error method, or
+  - A specific algorithm, or
+  - A mathematical formula.
+- **Do not use any programming concepts at this stage.**
+
+---
+
+## 3. Write the Algorithm
+An algorithm is a step-by-step procedure to solve a problem.
+
+Each step should be:
+- Finite
+- Simple
+- Unambiguous
+- Follow the **SRP (Single Responsibility Principle)**
+
+---
+
+## 4. Write the Fake Code (Pseudocode)
+- Convert the algorithm into pseudocode.
+- The pseudocode should resemble programming logic without following any specific programming language syntax.
+
+---
+
+## 5. Code It
+- Convert the pseudocode into an actual program using the chosen programming language.
+
+---
+
+## 6. Validate / Test / Verify (Optional)
+- Test the pseudocode and the program.
+- Verify whether the output is correct.
+- Analyze the efficiency of the solution.
+- Check if a better or more optimized solution is possible.
+
+---
+
+## Assignments
+- Assignment 8 given.
+
+---
+
+# Evolution of Programming Languages
+
+## 1. Machine Language
+- The first generation of programming language.
+- Consists of only binary numbers (0s and 1s).
+- Very difficult for humans to understand and write.
+
+---
+
+## 2. Human-Friendly Language (Assembly Language)
+- Uses mnemonics instead of binary instructions.
+- Easier than Machine Language.
+- Requires an assembler to convert assembly code into machine code.
+
+---
+
+## 3. Domain-Oriented Languages
+Languages designed for specific application domains.
+
+Examples:
+- COBOL
+- FORTRAN
+
+Initially, only domain-oriented languages existed.
+
+---
+
+## 4. Domain-Friendly Languages
+General-purpose programming languages that are easier for programmers.
+
+Examples:
+- C
+- Pascal
+
+These languages are not restricted to a specific domain.
+
+---
+
+## 5. Object-Oriented Programming Languages (OOPL)
+Examples:
+- C++
+- C with Classes
+- Simula 67
+
+These languages introduced Object-Oriented Programming concepts.
+
+---
+
+# C++
+
+**C++ = C + Object-Oriented Programming**
+
+- C++ extended the C language by adding Object-Oriented concepts.
+- It mainly introduced features such as inheritance, classes, objects, polymorphism, and encapsulation.
+
+### Relationship Between C and C++
+
+- Every **C program** is also a **C++ program**.
+- But every **C++ program** is **not** a C program.
+
+Reason:
+- **C++ is a superset of C.**
+- **C is a subset of C++.**
+
+---
+
+# Why Java Was Introduced
+
+Although C++ became very popular, it had several design issues, such as:
+
+- Friend functions
+- Private inheritance
+- Global variables
+- Global functions
+- Operator overloading
+- Objects can be created in the Stack area
+
+Because of these issues, software experts wanted a **Strict Object-Oriented Programming Language (Strict OOPL)**.
+
+As a result,
+**Java** was introduced.
+
+Java was designed to:
+- Be more secure.
+- Reduce complexity.
+- Remove many problematic features of C++.
+- Promote pure object-oriented programming principles (with some practical exceptions).
+
+---
+
+# Assignments
+
+- Assignment 9 given.
+- Assignment 10 given.
+- Assignment 11 given.
