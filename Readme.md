@@ -1189,3 +1189,268 @@ Point p = new Point(3, 4);
 - Post-increment uses the value first, then increments.
 - Pre-increment increments first, then uses the value.
 - Bitwise operators work on individual bits of integers.
+
+# DAY 4 – TUESDAY (07-07-2026)
+
+## Primitive vs Object
+
+### Primitive Variable (Java)
+
+```java
+int number = 10;
+```
+
+- `number` is a **primitive variable**.
+- It stores only the value `10`.
+- No additional properties or methods are associated with it.
+
+---
+
+### Primitive Array in C/C++
+
+```c
+int array[10];
+```
+
+- The array contains **10 integer elements only**.
+- It is treated as a primitive collection of integers.
+- No built-in methods or object behavior.
+
+---
+
+### Array in Java
+
+```java
+int[] array = new int[10];
+```
+
+- In Java, an array is an **object**.
+- It stores integer elements along with object-related information.
+- Arrays have properties such as:
+  - `length`
+
+Example:
+
+```java
+System.out.println(array.length);
+```
+
+---
+
+# High Cohesion (SRP)
+
+## High Cohesion
+
+A solution should solve **only one problem at a time**.
+
+> **Do one job at a time.**
+
+This concept is known as **High Cohesion**.
+
+### Example
+
+Instead of writing one class that performs multiple unrelated tasks,
+
+- Student Management
+- Fee Calculation
+- Report Generation
+
+Create separate classes:
+
+- Student
+- FeeCalculator
+- ReportGenerator
+
+Each class has **one responsibility**.
+
+---
+
+# SOLID Principles
+
+SOLID is a set of five object-oriented design principles.
+
+- **S** – Single Responsibility Principle (SRP)
+- **O** – Open/Closed Principle (OCP)
+- **L** – Liskov Substitution Principle (LSP)
+- **I** – Interface Segregation Principle (ISP)
+- **D** – Dependency Inversion Principle (DIP)
+
+---
+
+# Naming Variables
+
+## Generic Information
+
+```java
+int number;
+```
+
+Very generic.
+
+---
+
+## Specific Information
+
+```java
+int age;
+```
+
+More meaningful.
+
+---
+
+## Specialized Information
+
+```java
+int student_age;
+```
+
+Highly descriptive.
+
+Choose meaningful variable names whenever possible.
+
+---
+
+# Class Example
+
+```java
+class StudentAge {
+    int age;
+    int maxAge;
+    int minAge;
+}
+```
+
+Example Objects
+
+```java
+StudentAge vtu_age;
+```
+
+- Minimum Age = 18
+- Maximum Age = 60
+
+```java
+StudentAge jntu_age;
+```
+
+- Minimum Age = 16
+- Maximum Age = 80
+
+---
+
+# Problem 1: Check if a Year is Leap Year
+
+### Logic
+
+A year is a leap year if:
+
+- Divisible by 400
+
+OR
+
+- Divisible by 4 but **not** divisible by 100.
+
+### Formula
+
+```text
+(year % 400 == 0) ||
+(year % 4 == 0 && year % 100 != 0)
+```
+
+---
+
+# Problem 2: Check if a Number is a Perfect Square
+
+### Logic
+
+A number is a perfect square if:
+
+```text
+√number × √number = number
+```
+
+Examples
+
+| Number | Perfect Square |
+|---------|----------------|
+| 4 | Yes |
+| 9 | Yes |
+| 16 | Yes |
+| 25 | Yes |
+| 18 | No |
+| 20 | No |
+
+---
+
+# Problem 3: Find Student Result Based on Average Marks
+
+| Average Score | Result |
+|---------------|--------|
+| 0 – 49 | Fail |
+| 50 – 69 | Second Class |
+| 70 – 89 | First Class |
+| 90 – 100 | Distinction |
+
+---
+
+# Steps to Solve a Programming Problem
+
+## Step 1 – Understand the Problem
+
+- Understand what is being asked.
+- Remove unwanted information.
+- Clearly identify:
+  - Input (I/P)
+  - Output (O/P)
+- Identify all important requirements.
+
+---
+
+## Step 2 – Build the Solution
+
+Develop the solution using:
+
+- Trial and Error
+- Mathematical Formula
+- Algorithm
+
+> Do **not** think about programming syntax at this stage.
+
+---
+
+## Step 3 – Write the Fake Code (Pseudocode)
+
+Convert the solution into simple English-like steps before coding.
+
+---
+
+## Step 4 – Validate the Solution (Optional)
+
+- Test the pseudocode.
+- Verify correctness.
+- Check different test cases.
+- Improve efficiency if possible.
+- Optimize the solution.
+
+---
+
+## Step 5 – Code It
+
+Finally, convert the pseudocode into the desired programming language (Java, C, C++, Python, etc.).
+
+---
+
+# Key Takeaways
+
+- Primitive variables store only values.
+- Java arrays are objects.
+- Follow **High Cohesion (Single Responsibility Principle)**.
+- Use meaningful variable names.
+- Solve one problem at a time.
+- Before coding:
+  1. Understand
+  2. Build Logic
+  3. Write Pseudocode
+  4. Validate
+  5. Code
