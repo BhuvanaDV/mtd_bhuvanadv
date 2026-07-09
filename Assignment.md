@@ -1451,3 +1451,25 @@ The programmer explicitly requests the conversion.
 ## Conclusion
 
 Python avoids general implicit type casting because it is a strongly typed language. Instead of automatically converting incompatible data types, Python requires **explicit type casting** using functions such as `int()`, `float()`, `str()`, and `bool()`. This makes Python programs safer, clearer, and less prone to unexpected behavior.
+
+## Day-5 8/7/2026[Wednesday]
+
+-- refer neelmyna github files assignment file for that
+
+## Day-6 9/7/2026[Thursday]
+#  Assignment12:
+    1.Write a program to find sum of digits of a number
+        a. Extract digits from the number and solve the problem
+        b. Use Pythonic
+    2.Find smallest and biggest digit in a number
+    3.Check if a number is Prime
+    4.Print Prime numbers in decreasing order between M and N (M < N)
+    5.Print Prime digits in a number
+    6.Print distinct Composite digits in a number
+    7.Find sum of Odd digits in a number
+    8.Find sum of Even placed digits in a number
+    9.Find Odd placed Even digits in a number
+
+
+
+    

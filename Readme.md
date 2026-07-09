@@ -1606,3 +1606,11 @@ Java was designed to:
 - Assignment 9 given.
 - Assignment 10 given.
 - Assignment 11 given.
+
+## Day-5 8/7/2026[Wednesday]
+
+## DAY7 THURSDAY 09-07-2026
+
+- Formatting the output is taught. Assignment12 given.
+
+DAY8 FRIDAY 10-07-2026 Functions Call Stack match-case Problem solving on Loops/iterations range function with yield
