@@ -39,7 +39,7 @@ print("Smallest digit =", smallest)
 print("Biggest digit =", biggest)
 
 
-// 3  Check if a Number is Prime
+## 3  Check if a Number is Prime
 
 num = int(input("Enter a number: "))
 
@@ -54,7 +54,7 @@ if count == 2:
 else:
     print("Not Prime")
 
-// 4 Print Prime Numbers in Decreasing Order Between M and N (M < N)
+## 4 Print Prime Numbers in Decreasing Order Between M and N (M < N)
 
 m = int(input("Enter M: "))
 n = int(input("Enter N: "))
@@ -70,7 +70,7 @@ for num in range(n, m - 1, -1):
     if count == 2:
         print(num)
 
-// 5 Print Prime Digits in a Number
+## 5 Print Prime Digits in a Number
 num = int(input("Enter a number: "))
 
 print("Prime digits are:")
@@ -83,7 +83,7 @@ while num > 0:
 
     num //= 10
 
-////// or
+## or
 
 num = int(input("Enter a number: "))
 
@@ -98,7 +98,7 @@ while num > 0:
     num = num // 10
 
 
-// 6 Print Distinct Composite Digits in a Number
+## 6 Print Distinct Composite Digits in a Number
 num = int(input("Enter a number: "))
 
 printed = set()
@@ -112,7 +112,7 @@ while num > 0:
 
     num //= 10
 
-////////////// or
+## or
 
 num = int(input("Enter a number: "))
 
@@ -140,7 +140,7 @@ while num > 0:
 
     num = num // 10
 
-//7 Find Sum of Odd Digits in a Number
+## 7 Find Sum of Odd Digits in a Number
 num = int(input("Enter a number: "))
 
 sum_odd = 0
@@ -157,7 +157,7 @@ print("Sum of odd digits =", sum_odd)
 
 
 
-//7b Find Sum of even Digits in a Number
+## 7b Find Sum of even Digits in a Number
 num = int(input("Enter a number: "))
 
 sum_even = 0
@@ -172,7 +172,7 @@ while num > 0:
 
 print("Sum of even digits =", sum_even)
 
-// 8 Find Sum of Even Placed Digits in a Number
+## 8 Find Sum of Even Placed Digits in a Number
 
 num = int(input("Enter a number: "))
 
@@ -190,7 +190,7 @@ while num > 0:
 
 print("Sum of even placed digits =", sum_even_place)
 
-// 9a Find Odd Placed Even Digits in a Number
+## 9a Find Odd Placed Even Digits in a Number
 
 num = int(input("Enter a number: "))
 
@@ -205,8 +205,7 @@ while num > 0:
         print(digit)
 
     position += 1
-    num //= 10
-// 9b Odd Placed Odd Digits
+## 9b Odd Placed Odd Digits
 num = int(input("Enter a number: "))
 
 position = 1
@@ -223,7 +222,7 @@ while num > 0:
     position = position + 1
     num = num // 10
 
-// 9c Even Placed Even Digits
+## 9c Even Placed Even Digits
 
 num = int(input("Enter a number: "))
 
@@ -241,7 +240,7 @@ while num > 0:
     position = position + 1
     num = num // 10
 
-// 9d Even Placed Odd Digits
+## 9d Even Placed Odd Digits
 num = int(input("Enter a number: "))
 
 position = 1
