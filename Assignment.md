@@ -1470,6 +1470,45 @@ Python avoids general implicit type casting because it is a strongly typed langu
     8.Find sum of Even placed digits in a number
     9.Find Odd placed Even digits in a number
 
-
+// javascript mini project
 
     
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Form</title>
+</head>
+<body>
+
+<h2>Name: <input type="text" id="name"></h2>
+
+<h2>Price: <input type="number" id="price"></h2>
+
+<h2>Quantity: <input type="number" id="quantity"></h2>
+
+<button onclick="submitForm()">Submit</button>
+
+<script>
+function submitForm() {
+    let name = document.getElementById("name").value;
+    let price = document.getElementById("price").value;
+    let quantity = document.getElementById("quantity").value;
+
+    alert(
+        "Name: " + name +
+        "\nPrice: " + price +
+        "\nQuantity: " + quantity
+    );
+}
+</script>
+
+</body>
+</html>
+
+Output
+Enter Name, Price, and Quantity.
+Click Submit.
+A popup displays:
+Name: Apple
+Price: 120
+Quantity: 5
