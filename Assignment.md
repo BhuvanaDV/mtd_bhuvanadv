@@ -1512,3 +1512,480 @@ A popup displays:
 Name: Apple
 Price: 120
 Quantity: 5
+
+
+## main() should call run_app()
+   run_app() calls run_menu()
+   run_menu() takes the choice from run_app() and runs that functionality as per choice
+   for every choicethe user makes and that functionality has run, the menu should be displayed again until the user whishes to quit the app. 
+def run_app():
+    print(' ')
+
+def run_menu():
+    if menu == southindian
+        print('Idli,Dosa,chapati')
+    elif menu == northindian
+        print('naan,butter chicken')
+    elif menu == continental
+        print('grilled chicken,fish and chips')
+    elif menu == italian
+        print('pizza,pasta')
+    elif menu == chinese
+        print('Momos,noodles')
+
+if __name__ == "__main__":
+    main()
+## 13/7/26[monday]
+10. Find the Middle Digit of a Number
+Problem
+
+Find the middle digit of a given number.
+
+Note: The number should contain an odd number of digits.
+
+Algorithm
+Read the number.
+Count the number of digits.
+If the number has an even number of digits, there is no single middle digit.
+Otherwise, remove digits from the right until the middle digit remains.
+Print the middle digit.
+Python Program
+n = int(input("Enter a number: "))
+
+temp = n
+count = 0
+
+# Count digits
+while temp > 0:
+    count += 1
+    temp //= 10
+
+# Check whether digits are odd
+if count % 2 == 0:
+    print("Middle digit does not exist.")
+else:
+    middle = count // 2
+
+    while middle > 0:
+        n //= 10
+        middle -= 1
+
+    print("Middle digit =", n % 10)
+Example
+
+Input
+
+12345
+
+Output
+
+Middle digit = 3
+Explanation
+Number = 12345
+
+Digits = 5
+
+Middle Position = 5 // 2 = 2
+
+Remove two digits from right
+
+12345 → 1234 → 123
+
+Middle digit = 123 % 10 = 3
+
+
+Java Program
+import java.util.Scanner;
+
+public class MiddleDigit {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int n = sc.nextInt();
+
+        int temp = n;
+        int count = 0;
+
+        while (temp > 0) {
+            count++;
+            temp /= 10;
+        }
+
+        if (count % 2 == 0) {
+            System.out.println("Middle digit does not exist.");
+        } else {
+
+            int middle = count / 2;
+
+            while (middle > 0) {
+                n /= 10;
+                middle--;
+            }
+
+            System.out.println("Middle digit = " + (n % 10));
+        }
+    }
+}
+11. Lucky Digit Problem
+Problem
+
+A number is called Lucky if it contains the digit 7.
+
+Otherwise, it is Not Lucky.
+
+Algorithm
+Read the number.
+Extract each digit.
+If any digit is 7, print Lucky Number.
+Otherwise, print Not Lucky Number.
+Python Program
+n = int(input("Enter a number: "))
+
+found = False
+
+while n > 0:
+    digit = n % 10
+
+    if digit == 7:
+        found = True
+        break
+
+    n //= 10
+
+if found:
+    print("Lucky Number")
+else:
+    print("Not Lucky Number")
+Example 1
+
+Input
+
+52746
+
+Output
+
+Lucky Number
+Example 2
+
+Input
+
+45689
+
+Output
+
+Not Lucky Number
+Explanation
+
+For 52746
+
+Digits checked:
+
+6
+4
+7  ← Found
+
+Therefore Lucky Number
+
+
+Java Program
+import java.util.Scanner;
+
+public class LuckyDigit {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int n = sc.nextInt();
+
+        boolean found = false;
+
+        while (n > 0) {
+
+            int digit = n % 10;
+
+            if (digit == 7) {
+                found = true;
+                break;
+            }
+
+            n /= 10;
+        }
+
+        if (found)
+            System.out.println("Lucky Number");
+        else
+            System.out.println("Not Lucky Number");
+    }
+}
+
+# 12. Kaprekar's Problem
+
+## Problem Statement
+
+Given a **4-digit number** (with at least two different digits), repeatedly perform the following steps until you get **6174**.
+
+1. Arrange the digits in **descending order**.
+2. Arrange the digits in **ascending order**.
+3. Subtract the smaller number from the larger number.
+4. Repeat the process.
+
+**6174** is called **Kaprekar's Constant**.
+
+---
+
+## Example
+
+Input
+
+```text
+3524
+```
+
+Iterations
+
+```text
+5432 - 2345 = 3087
+
+8730 - 378 = 8352
+
+8532 - 2358 = 6174
+```
+
+Output
+
+```text
+Kaprekar Constant reached: 6174
+```
+
+---
+
+## Python Program
+
+```python
+n = int(input("Enter a 4-digit number: "))
+
+while n != 6174:
+
+    s = str(n).zfill(4)
+
+    asc = int("".join(sorted(s)))
+    desc = int("".join(sorted(s, reverse=True)))
+
+    n = desc - asc
+
+    print(desc, "-", asc, "=", n)
+
+print("Kaprekar Constant reached:", n)
+```
+
+---
+
+## Java Program
+
+```java
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Kaprekar {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a 4-digit number: ");
+        int n = sc.nextInt();
+
+        while (n != 6174) {
+
+            String s = String.format("%04d", n);
+
+            char[] a = s.toCharArray();
+            Arrays.sort(a);
+
+            String ascStr = new String(a);
+            String descStr = new StringBuilder(ascStr).reverse().toString();
+
+            int asc = Integer.parseInt(ascStr);
+            int desc = Integer.parseInt(descStr);
+
+            n = desc - asc;
+
+            System.out.println(desc + " - " + asc + " = " + n);
+        }
+
+        System.out.println("Kaprekar Constant reached: " + n);
+    }
+}
+```
+
+---
+
+# 13. Print an M × N Matrix in Spiral Form
+
+## Problem Statement
+
+Given an **M × N matrix**, print all elements in **spiral order**.
+
+---
+
+## Example
+
+Input Matrix
+
+```text
+1   2   3   4
+
+5   6   7   8
+
+9  10  11  12
+```
+
+Output
+
+```text
+1 2 3 4 8 12 11 10 9 5 6 7
+```
+
+---
+
+## Algorithm
+
+1. Print the top row.
+2. Print the right column.
+3. Print the bottom row.
+4. Print the left column.
+5. Move the boundaries inward.
+6. Repeat until all elements are printed.
+
+---
+
+## Python Program
+
+```python
+rows = int(input("Enter number of rows: "))
+cols = int(input("Enter number of columns: "))
+
+matrix = []
+
+print("Enter matrix elements:")
+
+for i in range(rows):
+    row = list(map(int, input().split()))
+    matrix.append(row)
+
+top = 0
+bottom = rows - 1
+left = 0
+right = cols - 1
+
+print("Spiral Order:")
+
+while top <= bottom and left <= right:
+
+    # Top row
+    for i in range(left, right + 1):
+        print(matrix[top][i], end=" ")
+    top += 1
+
+    # Right column
+    for i in range(top, bottom + 1):
+        print(matrix[i][right], end=" ")
+    right -= 1
+
+    # Bottom row
+    if top <= bottom:
+        for i in range(right, left - 1, -1):
+            print(matrix[bottom][i], end=" ")
+        bottom -= 1
+
+    # Left column
+    if left <= right:
+        for i in range(bottom, top - 1, -1):
+            print(matrix[i][left], end=" ")
+        left += 1
+```
+
+---
+
+## Java Program
+
+```java
+import java.util.Scanner;
+
+public class SpiralMatrix {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter rows: ");
+        int rows = sc.nextInt();
+
+        System.out.print("Enter columns: ");
+        int cols = sc.nextInt();
+
+        int[][] matrix = new int[rows][cols];
+
+        System.out.println("Enter matrix elements:");
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+
+        int top = 0;
+        int bottom = rows - 1;
+        int left = 0;
+        int right = cols - 1;
+
+        System.out.println("Spiral Order:");
+
+        while (top <= bottom && left <= right) {
+
+            for (int i = left; i <= right; i++)
+                System.out.print(matrix[top][i] + " ");
+            top++;
+
+            for (int i = top; i <= bottom; i++)
+                System.out.print(matrix[i][right] + " ");
+            right--;
+
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--)
+                    System.out.print(matrix[bottom][i] + " ");
+                bottom--;
+            }
+
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--)
+                    System.out.print(matrix[i][left] + " ");
+                left++;
+            }
+        }
+    }
+}
+```
+
+### Example
+
+**Input**
+
+```text
+Rows = 3
+Columns = 4
+
+1 2 3 4
+5 6 7 8
+9 10 11 12
+```
+
+**Output**
+
+```text
+Spiral Order:
+1 2 3 4 8 12 11 10 9 5 6 7
+```
+
+Both solutions have **Time Complexity: O(M × N)** and **Space Complexity: O(1)** (excluding the input matrix).

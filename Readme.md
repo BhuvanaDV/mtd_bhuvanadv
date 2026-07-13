@@ -1614,3 +1614,504 @@ Java was designed to:
 - Formatting the output is taught. Assignment12 given.
 
 DAY8 FRIDAY 10-07-2026 Functions Call Stack match-case Problem solving on Loops/iterations range function with yield
+
+
+# Assignment – Day 8 (Friday 10-07-2026 & Monday 13-07-2026)
+
+## Topics Covered
+
+- Functions
+- Function Call Stack
+- PDB (Python Debugger)
+- `match-case`
+- Problem Solving using Loops (Iterations)
+- `range()` function
+- `yield`
+- List Methods (`extend()` and `append()`)
+- Sum of Even Digits
+- Sum of Even Digits at Even/Odd Positions
+- Stack Frames
+- Menu Driven Programming
+
+---
+
+# 1. List Methods
+
+## extend()
+
+`extend()` adds all elements of one list into another list.
+
+### Example
+
+```python
+l1 = [1, 2, 3, 4, 5]
+l2 = [6, 7, 8, 9, 0]
+
+l1.extend(l2)
+
+print(len(l1))
+print(l1)
+```
+
+### Output
+
+```
+10
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+```
+
+### Explanation
+
+- Every element of `l2` is copied into `l1`.
+- Therefore the length becomes **10**.
+
+---
+
+## append()
+
+`append()` inserts the entire list as a **single element**.
+
+### Example
+
+```python
+l1 = [1, 2, 3, 4, 5]
+l2 = [6, 7, 8, 9, 0]
+
+l1.append(l2)
+
+print(len(l1))
+print(l1)
+print(l1[5][2])
+```
+
+### Output
+
+```
+6
+[1, 2, 3, 4, 5, [6, 7, 8, 9, 0]]
+8
+```
+
+### Explanation
+
+- `l2` becomes one nested list.
+- Length becomes **6**.
+- `l1[5]` refers to the nested list.
+- `l1[5][2]` gives `8`.
+
+---
+
+# 2. Understanding Assignment Operators
+
+Example:
+
+```python
+i = -1
+
+i -= -1
+```
+
+Equivalent to
+
+```python
+i = i - (-1)
+```
+
+Calculation
+
+```
+i = -1 + 1
+i = 0
+```
+
+---
+
+# 3. Sum of Even Digits
+
+## Problem
+
+Find the sum of all even digits in a number.
+
+### Algorithm
+
+1. Read a number.
+2. Extract the last digit.
+3. Check whether the digit is even.
+4. Add it to the sum.
+5. Remove the last digit.
+6. Repeat until the number becomes zero.
+
+### Program
+
+```python
+n = int(input("Enter number: "))
+
+sum_of_even_digits = 0
+
+while n != 0:
+    digit = n % 10
+
+    if digit % 2 == 0:
+        sum_of_even_digits += digit
+
+    n = n // 10
+
+print("Sum =", sum_of_even_digits)
+```
+
+---
+
+# 4. Sum of Even Digits at Even/Odd Positions
+
+Example
+
+```
+2354615
+4576
+```
+
+Idea:
+
+Use a boolean variable named `flip`.
+
+```
+flip = True
+```
+
+If `flip` remains **True** after the loop, then the number has an **even number of digits**.
+
+### Program
+
+```python
+n = int(input("Enter number: "))
+
+sum1 = 0
+sum2 = 0
+
+flip = True
+
+while n != 0:
+
+    digit = n % 10
+    n = n // 10
+
+    if digit % 2 == 0:
+
+        if flip:
+            sum1 += digit
+        else:
+            sum2 += digit
+
+    flip = not flip
+
+if flip:
+    print("Sum of Odd Placed Even Digits =", sum2)
+else:
+    print("Sum of Odd Placed Even Digits =", sum1)
+```
+
+---
+
+# 5. Functions
+
+A **function** is a reusable block of code that performs one specific task.
+
+A good function should follow the **SRP (Single Responsibility Principle)**.
+
+Meaning:
+
+- One function should perform only one task.
+- High Cohesion.
+
+---
+
+## Advantages of Functions
+
+- Code Reusability
+- Easy Debugging
+- Easy Maintenance
+- Better Readability
+- Reduces Code Duplication
+
+---
+
+## Function Components
+
+A function may
+
+- Receive arguments
+- Perform processing
+- Return a value
+
+Example
+
+```python
+import math
+
+print(math.sqrt(25))
+```
+
+Output
+
+```
+5.0
+```
+
+Example
+
+```python
+print("Hello")
+```
+
+`print()` returns an acknowledgement (`None` in Python).
+
+---
+
+# 6. Function Call Stack
+
+Whenever a function is called,
+
+Python creates a **Stack Frame**.
+
+When the function finishes execution,
+
+its frame is removed from the stack.
+
+This mechanism is called the **Function Call Stack**.
+
+---
+
+# 7. Special Purpose Registers
+
+## Instruction Register (IR)
+
+Stores the instruction currently being executed.
+
+---
+
+## Program Counter (PC)
+
+Stores the address of the next instruction to execute.
+
+---
+
+## Frame Pointer (FP)
+
+Stores the address of the current function's stack frame.
+
+---
+
+## Stack Pointer (SP)
+
+Stores the address of the top frame in the stack.
+
+---
+
+## Accumulator
+
+Stores intermediate calculation results.
+
+---
+
+## MAR (Memory Address Register)
+
+Stores the memory address to be accessed.
+
+---
+
+## MDR (Memory Data Register)
+
+Stores data being transferred between memory and CPU.
+
+---
+
+# 8. Stack Frame
+
+Whenever a function is called,
+
+a memory block called a **Frame** is created.
+
+A stack frame generally contains
+
+- Function parameters
+- Local variables
+- Return address
+- Addresses of called functions
+
+---
+
+# 9. Function Call Example
+
+```python
+def goa():
+    print("I came to enjoy the beaches")
+    mumbai("good vibes")
+    print("I came to Goa to enjoy the Cruise")
+
+
+def mumbai(param):
+    print("I came to Mumbai to learn Stock Markets")
+    vadodara()
+    print("I came back to Mumbai to enjoy the Vada Pav")
+
+
+def vadodara():
+    my_age = 40
+    print("I came to Vadodara to enjoy India's first Bullet Train and buy Diamonds")
+
+
+print("I am at home")
+goa()
+print("I am back home")
+```
+
+### Function Call Sequence
+
+```
+main()
+
+↓
+
+goa()
+
+↓
+
+mumbai()
+
+↓
+
+vadodara()
+
+↓
+
+mumbai()
+
+↓
+
+goa()
+
+↓
+
+main()
+```
+
+This demonstrates the working of the **Function Call Stack**.
+
+---
+
+# 10. Menu Driven Program Structure
+
+The application should follow this hierarchy.
+
+```
+main()
+
+↓
+
+run_app()
+
+↓
+
+run_menu()
+
+↓
+
+Execute selected functionality
+
+↓
+
+Display menu again
+
+↓
+
+Repeat until user chooses Quit
+```
+
+### Flow
+
+```
+Start
+
+↓
+
+main()
+
+↓
+
+run_app()
+
+↓
+
+Display Menu
+
+↓
+
+Read User Choice
+
+↓
+
+Execute Selected Option
+
+↓
+
+Return to Menu
+
+↓
+
+Repeat
+
+↓
+
+Quit
+
+↓
+
+End
+```
+
+---
+
+# 11. Sample Menu Structure
+
+```text
+1. South Indian
+2. North Indian
+3. Chinese
+4. Italian
+5. Continental
+6. Exit
+```
+
+The menu must continue to appear after every operation until the user selects **Exit**.
+
+---
+
+# 12. Important Concepts Learned
+
+- Functions improve code organization.
+- Every function call creates a stack frame.
+- Frames are removed automatically after function completion.
+- `append()` adds an object as one element.
+- `extend()` adds all elements individually.
+- Loops can solve digit-based problems efficiently.
+- `flip = not flip` is useful for alternating positions.
+- Menu-driven programs repeatedly execute until the user exits.
+
+
+```## Arithmetic Operators
+
+- All Arithmetic operators are binary operators.
+
+- The syntax of the language necessitates us to use the operators in INFIX notation.
+
+- Default evaluation is Left to Right (Associtivity).
+
+- Default Associtivity is overridden by Precedence of Operators.
+
+- The I/P to Arithmetic operators are numbers.
+
+- O/P is also a number
+
+- The evelaution of Arithmetic expressions are done only after converting them into Postfix notation.
+
+- If operands are different types, say, double + int (5.5 + 12) then implicit casting happens 1st.
