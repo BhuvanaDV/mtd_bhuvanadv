@@ -1989,3 +1989,53 @@ Spiral Order:
 ```
 
 Both solutions have **Time Complexity: O(M × N)** and **Space Complexity: O(1)** (excluding the input matrix).
+## single and double linked stack and queue program.
+
+def insert():
+    pass
+
+def delete():
+    pass
+
+def update():
+    pass
+
+def search():
+    pass
+
+def display():
+    pass
+
+def menu(choice):
+    match choice:
+        case 1:
+            insert()
+        case 2:
+            delete()
+        case 3:
+            update()
+        case 4:
+            search()
+        case 5:
+            display()
+        case 6:
+            print("Exit")
+        case _:
+            print("Invalid Choice")
+
+def run_app():
+    while True:
+        print("""
+1.Insert
+2.Delete
+3.Update
+4.Search
+5.Display
+6.Exit
+""")
+        choice = int(input("Enter choice: "))
+        if choice == 6:
+            break
+        menu(choice)
+
+run_app()

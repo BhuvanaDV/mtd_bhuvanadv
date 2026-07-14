@@ -2115,3 +2115,338 @@ The menu must continue to appear after every operation until the user selects **
 - The evelaution of Arithmetic expressions are done only after converting them into Postfix notation.
 
 - If operands are different types, say, double + int (5.5 + 12) then implicit casting happens 1st.
+
+# DAY 9 – TUESDAY (14-07-2026)
+
+# DATA STRUCTURES
+
+## Variables in Memory
+
+```c
+int num1 = 0, num2 = 0, num3 = 0;
+```
+
+### Understanding Variables
+
+- `num3` → Gives the **value** stored in `num3`.
+- `&num3` → Gives the **address** of `num3`.
+- `&num3 + 1` → Gives the address of the **next integer** in memory.
+  - It **might** be `num2` (This is a **blind and unsafe assumption** because memory layout is not guaranteed.)
+- `*(&num3 + 1)` → Dereferences the next address and returns the value stored there.
+
+> **Note:** Never assume local variables are stored consecutively in memory.
+
+---
+
+# Problem with Individual Variables
+
+```c
+int n1 = 0, n2 = 0, n3 = 0, n4 = 5, n5 = 10;
+
+// Imagine:
+int n1, n2, ..., n50;
+```
+
+Managing many individual variables becomes difficult.
+
+Instead, use an **Array**.
+
+```c
+int numbers[500];
+```
+
+---
+
+# Arrays
+
+An array stores multiple values of the **same data type** in **contiguous memory locations**.
+
+## Advantages
+
+- Easy to manage large amounts of data.
+- Elements are accessed using an **index**.
+- Memory is allocated continuously.
+
+Example:
+
+```
+numbers
++----+----+----+----+----+
+| 10 | 20 | 30 | 40 | 50 |
++----+----+----+----+----+
+  0    1    2    3    4
+```
+
+---
+
+# Array Index
+
+The index starts from **0**.
+
+If the array size is **n**:
+
+- First element → `numbers[0]`
+- Second element → `numbers[1]`
+- m-th element → `numbers[m-1]`
+- Last element → `numbers[n-1]`
+
+Example:
+
+```c
+int numbers[5] = {10, 20, 30, 40, 50};
+
+numbers[0] = 10
+numbers[1] = 20
+numbers[2] = 30
+numbers[3] = 40
+numbers[4] = 50
+```
+
+---
+
+# Random Access
+
+Any element can be accessed directly using its index.
+
+Example:
+
+```c
+numbers[250]
+```
+
+No need to traverse previous elements.
+
+This is called **Random Access**.
+
+---
+
+# Time Complexity of Array Lookup
+
+Accessing an element by index takes constant time.
+
+```
+Time Complexity = O(1)
+```
+
+Therefore,
+
+- Array is **Time Efficient**.
+
+---
+
+# Memory Efficiency
+
+Since arrays allocate a fixed continuous block of memory,
+
+- Unused memory may be wasted.
+- Size cannot be changed after creation.
+
+Therefore,
+
+- Array is **Memory Inefficient** compared to dynamic structures like Linked Lists.
+
+---
+
+# Dynamic Memory Allocation
+
+The size can be taken from the user.
+
+Example (C++):
+
+```cpp
+int size;
+cin >> size;
+
+float *ptr = new float[size];
+```
+
+---
+
+Example (Java):
+
+```java
+int size = scanner.nextInt();
+
+float[] array = new float[size];
+```
+
+---
+
+# Linked List
+
+A Linked List stores data using nodes connected through links.
+
+Unlike arrays,
+
+- Memory is **not contiguous**.
+- Nodes are created dynamically.
+- Memory is used only when required.
+
+---
+
+# Node Structure (Python)
+
+```python
+class Node:
+
+    def __init__(self, data=''):
+        self.data = data
+        self.link = None
+```
+
+### Explanation
+
+- `data` → Stores the value.
+- `link` → Stores the address of the next node.
+
+---
+
+# Linked List Class
+
+```python
+class LinkedList:
+
+    def __init__(self):
+        self.head = None
+```
+
+Initially,
+
+```
+head
+ |
+None
+```
+
+---
+
+# Basic Operations of Linked List
+
+```python
+class LinkedList:
+
+    def __init__(self):
+        self.head = None
+
+    def insert(self):
+        pass
+
+    def delete_node(self):
+        pass
+
+    def update(self):
+        pass
+
+    def search(self, element=''):
+        pass
+
+    def list(self):
+        pass
+```
+
+---
+
+# Linked List Operations
+
+## 1. Insert
+
+Adds a new node into the linked list.
+
+---
+
+## 2. Delete
+
+Removes an existing node.
+
+---
+
+## 3. Update
+
+Modifies the data of a node.
+
+---
+
+## 4. Search
+
+Finds whether an element exists.
+
+---
+
+## 5. List (Traversal)
+
+Displays all elements one by one.
+
+---
+
+# Array vs Linked List
+
+| Feature | Array | Linked List |
+|----------|-------|-------------|
+| Memory | Contiguous | Non-Contiguous |
+| Size | Fixed | Dynamic |
+| Access | O(1) | O(n) |
+| Insertion | Slow | Fast |
+| Deletion | Slow | Fast |
+| Memory Usage | May Waste Memory | Efficient |
+| Random Access | Yes | No |
+
+---
+
+# Important Interview Questions
+
+### 1. Why does an array start from index 0?
+
+Because the address of an element is calculated as:
+
+```text
+Base Address + (Index × Size of Data Type)
+```
+
+For the first element,
+
+```
+Base + (0 × Size)
+= Base Address
+```
+
+---
+
+### 2. Why is array lookup O(1)?
+
+Because the address is calculated directly using the index.
+
+---
+
+### 3. Why is a linked list memory efficient?
+
+Because memory is allocated dynamically only when needed.
+
+---
+
+### 4. Why can't linked lists perform random access?
+
+Because nodes are stored at different memory locations and must be traversed sequentially.
+
+---
+
+### 5. Which is better for frequent insertions and deletions?
+
+**Linked List**
+
+---
+
+# Summary
+
+- Variables store one value.
+- Arrays store multiple values in contiguous memory.
+- Array indexing starts from 0.
+- Array lookup is **O(1)**.
+- Arrays are fast but use fixed memory.
+- Linked Lists use dynamic memory.
+- Linked Lists support efficient insertion and deletion.
+- Basic Linked List operations:
+  - Insert
+  - Delete
+  - Update
+  - Search
+  - Traverse (List)
