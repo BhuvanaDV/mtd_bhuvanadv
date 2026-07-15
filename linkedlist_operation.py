@@ -3,12 +3,10 @@ class Node:
         self.data = data
         self.link = None
 
-
 class LinkedList:
     def __init__(self):
         self.head = None
-
-    # Insert at End
+        
     def insert(self):
         data = int(input("Enter value: "))
         new_node = Node(data)
@@ -23,7 +21,6 @@ class LinkedList:
 
         print("Node Inserted Successfully")
 
-    # Delete by Value
     def delete(self):
         if self.head is None:
             print("Linked List is Empty")
@@ -49,7 +46,6 @@ class LinkedList:
 
         print("Value Not Found")
 
-    # Update
     def update(self):
         if self.head is None:
             print("Linked List is Empty")
@@ -69,7 +65,6 @@ class LinkedList:
 
         print("Value Not Found")
 
-    # Search
     def search(self):
         if self.head is None:
             print("Linked List is Empty")
@@ -89,7 +84,6 @@ class LinkedList:
 
         print("Value Not Found")
 
-    # Display
     def display(self):
         if self.head is None:
             print("Linked List is Empty")
@@ -103,29 +97,22 @@ class LinkedList:
             temp = temp.link
         print("None")
 
-
 ll = LinkedList()
-
 
 def insert():
     ll.insert()
 
-
 def delete():
     ll.delete()
-
 
 def update():
     ll.update()
 
-
 def search():
     ll.search()
 
-
 def display():
     ll.display()
-
 
 def menu(choice):
     match choice:
@@ -141,7 +128,6 @@ def menu(choice):
             display()
         case _:
             print("Invalid Choice")
-
 
 def run_app():
     while True:
@@ -161,6 +147,5 @@ def run_app():
         menu(choice)
 
     print("End of Program")
-
 
 run_app()
