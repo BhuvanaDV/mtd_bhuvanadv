@@ -2450,3 +2450,7 @@ Because nodes are stored at different memory locations and must be traversed seq
   - Update
   - Search
   - Traverse (List)
+
+  ## 12th class 18/7/2026[saturday]
+
+  
