@@ -2453,4 +2453,16 @@ Because nodes are stored at different memory locations and must be traversed seq
 
   ## 12th class 18/7/2026[saturday]
 
-  
+  done by insertion sort and binary search algorithms.
+
+  ## 13th class 20/7/2026[Monday]
+
+Bubblesort presentation done by me.
+Quicksort done by sir.
+Orange partition problem done which is in assignments.
+
+## 14th class 21/7/2026[Tuesday]
+
+
+
+
