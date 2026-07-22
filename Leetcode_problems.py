@@ -545,4 +545,293 @@ class Solution:
             if nums[i] != 0:
                 nums[k], nums[i] = nums[i], nums[k]
                 k += 1
+Problem no-2390
+2390. Removing Stars From a String
+Medium
+Topi
+You are given a string s, which contains stars *.
+
+In one operation, you can:
+
+Choose a star in s.
+Remove the closest non-star character to its left, as well as remove the star itself.
+Return the string after all stars have been removed.
+
+Note:
+
+The input will be generated such that the operation is always possible.
+It can be shown that the resulting string will always be unique.
+ 
+
+Example 1:
+
+Input: s = "leet**cod*e"
+Output: "lecoe"
+Explanation: Performing the removals from left to right:
+- The closest character to the 1st star is 't' in "leet**cod*e". s becomes "lee*cod*e".
+- The closest character to the 2nd star is 'e' in "lee*cod*e". s becomes "lecod*e".
+- The closest character to the 3rd star is 'd' in "lecod*e". s becomes "lecoe".
+There are no more stars, so we return "lecoe".
+Example 2:
+
+Input: s = "erase*****"
+Output: ""
+Explanation: The entire string is removed, so we return an empty string.
+ 
+
+Constraints:
+
+1 <= s.length <= 105
+s consists of lowercase English letters and stars *.
+The operation above can be performed on s.
+
+## answer
+class Solution:
+    def removeStars(self, s: str) -> str:
+        stack = []
+
+        for ch in s:
+            if ch == '*':
+                stack.pop()
+            else:
+                stack.append(ch)
+
+        return "".join(stack)
+Problem no: 394
+394. Decode String
+Medium
+Topics
+premium lock icon
+Companies
+Given an encoded string, return its decoded string.
+
+The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times. Note that k is guaranteed to be a positive integer.
+
+You may assume that the input string is always valid; there are no extra white spaces, square brackets are well-formed, etc. Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, k. For example, there will not be input like 3a or 2[4].
+
+The test cases are generated so that the length of the output will never exceed 105.
+
+ 
+
+Example 1:
+
+Input: s = "3[a]2[bc]"
+Output: "aaabcbc"
+Example 2:
+
+Input: s = "3[a2[c]]"
+Output: "accaccacc"
+Example 3:
+
+Input: s = "2[abc]3[cd]ef"
+Output: "abcabccdcdcdef"
+ 
+
+Constraints:
+
+1 <= s.length <= 30
+s consists of lowercase English letters, digits, and square brackets '[]'.
+s is guaranteed to be a valid input.
+All the integers in s are in the range [1, 300].
+
+## answer
+class Solution:
+    def decodeString(self, s: str) -> str:
+        count_stack = []
+        string_stack = []
+
+        current_num = 0
+        current_str = ""
+
+        for ch in s:
+            if ch.isdigit():
+                current_num = current_num * 10 + int(ch)
+
+            elif ch == '[':
+                count_stack.append(current_num)
+                string_stack.append(current_str)
+
+                current_num = 0
+                current_str = ""
+
+            elif ch == ']':
+                repeat = count_stack.pop()
+                previous = string_stack.pop()
+
+                current_str = previous + current_str * repeat
+
+            else:
+                current_str += ch
+
+        return current_str
+Problem no-206
+206. Reverse Linked List
+Given the head of a singly linked list, reverse the list, and return the reversed list.
+Example 1:
+Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
+Example 2:
+Input: head = [1,2]
+Output: [2,1]
+Example 3:
+Input: head = []
+Output: []
+
+Constraints:
+
+The number of nodes in the list is the range [0, 5000].
+-5000 <= Node.val <= 5000
+
+##answer
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        prev = None
+        current = head
+
+        while current:
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+
+        return prev
+Problem no-141
+141. Linked List Cycle
+Given head, the head of a linked list, determine if the linked list has a cycle in it.
+There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to. Note that pos is not passed as a parameter.
+Return true if there is a cycle in the linked list. Otherwise, return false.
+
+Example 1:
+Input: head = [3,2,0,-4], pos = 1
+Output: true
+Explanation: There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed).
+Example 2:
+
+Input: head = [1,2], pos = 0
+Output: true
+Explanation: There is a cycle in the linked list, where the tail connects to the 0th node.
+Example 3:
+
+Input: head = [1], pos = -1
+Output: false
+Explanation: There is no cycle in the linked list.
+ 
+Constraints:
+
+The number of the nodes in the list is in the range [0, 104].
+-105 <= Node.val <= 105
+pos is -1 or a valid index in the linked-list.
+
+## answer
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        slow = head
+        fast = head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+            if slow == fast:
+                return True
+
+        return False
+
+Problem no- 875
+875. Koko Eating Bananas
+Koko loves to eat bananas. There are n piles of bananas, the ith pile has piles[i] bananas. The guards have gone and will come back in h hours.
+Koko can decide her bananas-per-hour eating speed of k. Each hour, she chooses some pile of bananas and eats k bananas from that pile. If the pile has less than k bananas, she eats all of them instead and will not eat any more bananas during this hour.
+Koko likes to eat slowly but still wants to finish eating all the bananas before the guards return.
+Return the minimum integer k such that she can eat all the bananas within h hours.
+
+Example 1:
+
+Input: piles = [3,6,7,11], h = 8
+Output: 4
+Example 2:
+
+Input: piles = [30,11,23,4,20], h = 5
+Output: 30
+Example 3:
+
+Input: piles = [30,11,23,4,20], h = 6
+Output: 23
+ 
+Constraints:
+
+1 <= piles.length <= 104
+piles.length <= h <= 109
+1 <= piles[i] <= 109
+
+## answer
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        left = 1
+        right = max(piles)
+
+        while left < right:
+            mid = (left + right) // 2
+
+            hours = 0
+            for bananas in piles:
+                hours += (bananas + mid - 1) // mid
+
+            if hours <= h:
+                right = mid
+            else:
+                left = mid + 1
+
+        return left
+Problem no- 17
+17. Letter Combinations of a Phone Number
+Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.
+A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+
+Example 1:
+
+Input: digits = "23"
+Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+Example 2:
+
+Input: digits = "2"
+Output: ["a","b","c"]
+ 
+
+Constraints:
+
+1 <= digits.length <= 4
+digits[i] is a digit in the range ['2', '9'].
+
+## answer
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        if not digits:
+            return []
+
+        phone = {
+            '2': "abc",
+            '3': "def",
+            '4': "ghi",
+            '5': "jkl",
+            '6': "mno",
+            '7': "pqrs",
+            '8': "tuv",
+            '9': "wxyz"
+        }
+
+        result = []
+
+        def backtrack(index, current):
+            if index == len(digits):
+                result.append(current)
+                return
+
+            letters = phone[digits[index]]
+
+            for ch in letters:
+                backtrack(index + 1, current + ch)
+
+        backtrack(0, "")
+
+        return result
 '''
