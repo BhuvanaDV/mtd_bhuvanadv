@@ -2463,6 +2463,10 @@ Orange partition problem done which is in assignments.
 
 ## 14th class 21/7/2026[Tuesday]
 
+builtin programs
 
+## 15th class 22/7/2026[Wednesday]
+leetcode programs 
+java basics chapter 1
 
 
