@@ -791,6 +791,7 @@ Example 1:
 
 Input: digits = "23"
 Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+
 Example 2:
 
 Input: digits = "2"
@@ -834,4 +835,464 @@ class Solution:
         backtrack(0, "")
 
         return result
+
+Problem no:5
+5. Longest Palindromic Substring
+Solved
+Medium
+Topics
+premium lock icon
+Companies
+Hint
+Given a string s, return the longest palindromic substring in s.
+
+ 
+
+Example 1:
+
+Input: s = "babad"
+Output: "bab"
+Explanation: "aba" is also a valid answer.
+Example 2:
+
+Input: s = "cbbd"
+Output: "bb"
+ 
+
+Constraints:
+
+1 <= s.length <= 1000
+s consist of only digits and English letters.
+## answer
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+
+        res = ""
+        resLen = 0
+
+        def expand(left, right):
+            while left >= 0 and right < len(s) and s[left] == s[right]:
+                left -= 1
+                right += 1
+
+            return s[left + 1:right]
+
+        for i in range(len(s)):
+            odd = expand(i, i)
+            if len(odd) > resLen:
+                res = odd
+                resLen = len(odd)
+            even = expand(i, i + 1)
+            if len(even) > resLen:
+                res = even
+                resLen = len(even)
+
+        return res
+Problem no - 135
+135. Candy
+Hard
+Topics
+premium lock icon
+Companies
+There are n children standing in a line. Each child is assigned a rating value given in the integer array ratings.
+
+You are giving candies to these children subjected to the following requirements:
+
+Each child must have at least one candy.
+Children with a higher rating get more candies than their neighbors.
+Return the minimum number of candies you need to have to distribute the candies to the children.
+
+ 
+
+Example 1:
+
+Input: ratings = [1,0,2]
+Output: 5
+Explanation: You can allocate to the first, second and third child with 2, 1, 2 candies respectively.
+Example 2:
+
+Input: ratings = [1,2,2]
+Output: 4
+Explanation: You can allocate to the first, second and third child with 1, 2, 1 candies respectively.
+The third child gets 1 candy because it satisfies the above two conditions.
+ 
+
+Constraints:
+
+n == ratings.length
+1 <= n <= 2 * 104
+0 <= ratings[i] <= 2 * 104
+
+## answer 
+class Solution:
+    def candy(self, ratings: List[int]) -> int:
+
+        n = len(ratings)
+
+        # Every child gets at least one candy
+        candies = [1] * n
+
+        # Left to Right
+        for i in range(1, n):
+            if ratings[i] > ratings[i - 1]:
+                candies[i] = candies[i - 1] + 1
+
+        # Right to Left
+        for i in range(n - 2, -1, -1):
+            if ratings[i] > ratings[i + 1]:
+                candies[i] = max(candies[i], candies[i + 1] + 1)
+
+        return sum(candies)
+
+Problem no-104
+104. Maximum Depth of Binary Tree
+Easy
+Topics
+premium lock icon
+Companies
+Given the root of a binary tree, return its maximum depth.
+
+A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+
+ 
+
+Example 1:
+
+
+Input: root = [3,9,20,null,null,15,7]
+Output: 3
+Example 2:
+
+Input: root = [1,null,2]
+Output: 2
+ 
+
+Constraints:
+
+The number of nodes in the tree is in the range [0, 104].
+-100 <= Node.val <= 100
+
+## answer
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+
+        if root is None:
+            return 0
+
+        left = self.maxDepth(root.left)
+        right = self.maxDepth(root.right)
+
+        return 1 + max(left, right)
+
+Problem no - 199
+199. Binary Tree Right Side View
+Medium
+Topics
+premium lock icon
+Companies
+Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+
+ 
+
+Example 1:
+
+Input: root = [1,2,3,null,5,null,4]
+
+Output: [1,3,4]
+
+Explanation:
+
+
+
+Example 2:
+
+Input: root = [1,2,3,4,null,null,null,5]
+
+Output: [1,3,4,5]
+
+Explanation:
+
+
+
+Example 3:
+
+Input: root = [1,null,3]
+
+Output: [1,3]
+
+Example 4:
+
+Input: root = []
+
+Output: []
+
+ 
+
+Constraints:
+
+The number of nodes in the tree is in the range [0, 100].
+-100 <= Node.val <= 100
+
+## answer
+from collections import deque
+
+class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+
+        ans = []
+        q = deque([root])
+
+        while q:
+            levelSize = len(q)
+
+            for i in range(levelSize):
+                node = q.popleft()
+
+                if i == levelSize - 1:
+                    ans.append(node.val)
+
+                if node.left:
+                    q.append(node.left)
+
+                if node.right:
+                    q.append(node.right)
+
+        return ans
+
+Problem no -1448
+1448. Count Good Nodes in Binary Tree
+Medium
+Topics
+premium lock icon
+Companies
+Hint
+Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a value greater than X.
+
+Return the number of good nodes in the binary tree.
+
+ 
+
+Example 1:
+
+
+
+Input: root = [3,1,4,3,null,1,5]
+Output: 4
+Explanation: Nodes in blue are good.
+Root Node (3) is always a good node.
+Node 4 -> (3,4) is the maximum value in the path starting from the root.
+Node 5 -> (3,4,5) is the maximum value in the path
+Node 3 -> (3,1,3) is the maximum value in the path.
+Example 2:
+
+
+
+Input: root = [3,3,null,4,2]
+Output: 3
+Explanation: Node 2 -> (3, 3, 2) is not good, because "3" is higher than it.
+Example 3:
+
+Input: root = [1]
+Output: 1
+Explanation: Root is considered as good.
+ 
+
+Constraints:
+
+The number of nodes in the binary tree is in the range [1, 10^5].
+Each node's value is between [-10^4, 10^4].
+
+## answer
+class Solution:
+    def goodNodes(self, root: TreeNode) -> int:
+
+        def dfs(node, maxValue):
+
+            if node is None:
+                return 0
+
+            good = 0
+
+            if node.val >= maxValue:
+                good = 1
+
+            maxValue = max(maxValue, node.val)
+
+            left = dfs(node.left, maxValue)
+            right = dfs(node.right, maxValue)
+
+            return good + left + right
+
+        return dfs(root, root.val)
+
+Problem no - 700
+700. Search in a Binary Search Tree
+Easy
+Topics
+premium lock icon
+Companies
+You are given the root of a binary search tree (BST) and an integer val.
+
+Find the node in the BST that the node's value equals val and return the subtree rooted with that node. If such a node does not exist, return null.
+
+ 
+
+Example 1:
+
+
+Input: root = [4,2,7,1,3], val = 2
+Output: [2,1,3]
+Example 2:
+
+
+Input: root = [4,2,7,1,3], val = 5
+Output: []
+ 
+
+Constraints:
+
+The number of nodes in the tree is in the range [1, 5000].
+1 <= Node.val <= 107
+root is a binary search tree.
+1 <= val <= 107
+### answer
+if root is None:
+            return None
+
+        if root.val == val:
+            return root
+
+        if val < root.val:
+            return self.searchBST(root.left, val)
+
+        return self.searchBST(root.right, val)
+
+Problem no - 841
+
+Code
+Testcase
+Testcase
+Test Result
+841. Keys and Rooms
+Medium
+Topics
+premium lock icon
+Companies
+There are n rooms labeled from 0 to n - 1 and all the rooms are locked except for room 0. Your goal is to visit all the rooms. However, you cannot enter a locked room without having its key.
+
+When you visit a room, you may find a set of distinct keys in it. Each key has a number on it, denoting which room it unlocks, and you can take all of them with you to unlock the other rooms.
+
+Given an array rooms where rooms[i] is the set of keys that you can obtain if you visited room i, return true if you can visit all the rooms, or false otherwise.
+
+ 
+
+Example 1:
+
+Input: rooms = [[1],[2],[3],[]]
+Output: true
+Explanation: 
+We visit room 0 and pick up key 1.
+We then visit room 1 and pick up key 2.
+We then visit room 2 and pick up key 3.
+We then visit room 3.
+Since we were able to visit every room, we return true.
+Example 2:
+
+Input: rooms = [[1,3],[3,0,1],[2],[0]]
+Output: false
+Explanation: We can not enter room number 2 since the only key that unlocks it is in that room.
+ 
+
+Constraints:
+
+n == rooms.length
+2 <= n <= 1000
+0 <= rooms[i].length <= 1000
+1 <= sum(rooms[i].length) <= 3000
+0 <= rooms[i][j] < n
+All the values of rooms[i] are unique.
+
+## answer
+class Solution:
+    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
+
+        visited = set()
+
+        def dfs(room):
+
+            visited.add(room)
+
+            for key in rooms[room]:
+
+                if key not in visited:
+                    dfs(key)
+
+        dfs(0)
+
+        return len(visited) == len(rooms)
+
+Problem no - 547
+547. Number of Provinces
+Medium
+Topics
+premium lock icon
+Companies
+There are n cities. Some of them are connected, while some are not. If city a is connected directly with city b, and city b is connected directly with city c, then city a is connected indirectly with city c.
+
+A province is a group of directly or indirectly connected cities and no other cities outside of the group.
+
+You are given an n x n matrix isConnected where isConnected[i][j] = 1 if the ith city and the jth city are directly connected, and isConnected[i][j] = 0 otherwise.
+
+Return the total number of provinces.
+
+ 
+
+Example 1:
+
+
+Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
+Output: 2
+Example 2:
+
+
+Input: isConnected = [[1,0,0],[0,1,0],[0,0,1]]
+Output: 3
+ 
+
+Constraints:
+
+1 <= n <= 200
+n == isConnected.length
+n == isConnected[i].length
+isConnected[i][j] is 1 or 0.
+isConnected[i][i] == 1
+isConnected[i][j] == isConnected[j][i]
+
+## answer
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+
+        n = len(isConnected)
+        visited = set()
+
+        def dfs(city):
+
+            visited.add(city)
+
+            for neighbor in range(n):
+
+                if isConnected[city][neighbor] == 1 and neighbor not in visited:
+                    dfs(neighbor)
+
+        provinces = 0
+
+        for city in range(n):
+
+            if city not in visited:
+                dfs(city)
+                provinces += 1
+
+        return provinces
 '''
